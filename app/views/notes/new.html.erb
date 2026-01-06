@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="form-box">
+        <h1><%= @note.new_record? ? "New Note" : "Edit Note" %></h1>
+
+        <% if @note.errors.any? %>
+        <div class="error-box">
+            <ul>
+                <% @note.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+        <% end %>
+
+        <%= form_with model: @note do |f| %>
+        <p>
+            <%= f.label :title %><br>
+            <%= f.text_field :title %>
+        </p>
+
+        <p>
+            <%= f.label :content %><br>
+            <%= f.text_area :content %>
+        </p>
+
+        <%= f.submit %>
+        <% end %>
+    </div>
+</div>

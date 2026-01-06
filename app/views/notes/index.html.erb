@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="header">
+        <h1>My Notes</h1>
+        <%= link_to "New Note", new_note_path, class: "button" %>
+    </div>
+
+    <% @notes.each do |note| %>
+    <div class="note">
+        <h3><%= note.title %></h3>
+        <p><%= note.content %></p>
+
+        <div class="actions">
+            <%= link_to "Edit", edit_note_path(note) %>
+
+            <%= button_to "Delete", note_path(note),
+            method: :delete,
+            data: { turbo_confirm: "Are you sure?" },
+            class: "delete-btn",
+            form: { style: "display:inline" } %>
+        </div>
+    </div>
+    <% end %>
+</div>
